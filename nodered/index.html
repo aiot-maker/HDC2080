@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#atencao" class="md-skip">
+        <a href="#i2c-bus-library" class="md-skip">
           Skip to content
         </a>
       
@@ -289,38 +289,10 @@
                   </a>
                 
                 
-                <h1 id="atencao">ATENÇÃO</h1>
-<p>Oi sou uma pagina de teste</p>
-<table>
-<thead>
-<tr>
-<th>First Header</th>
-<th>Second Header</th>
-<th>Third Header</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-<tr>
-<td>Content Cell</td>
-<td>Content Cell</td>
-<td>Content Cell</td>
-</tr>
-</tbody>
-</table>
-<pre><code>let i2c=global.get(&quot;i2c&quot;);
-const HDC2080_I2C = 0x40;
-
-const hdc = i2c.openSync(1);
-hdc.writeByteSync(HDC2080_I2C, 0x0E, 0x46);
-hdc.closeSync();
-
-return msg;
-</code></pre>
+                <h1 id="i2c-bus-library">I2C-bus library</h1>
+<p>Library <a href="https://www.npmjs.com/package/i2c-bus">i2c-bus available in NPM</a> will empower us to read and write to the registers of the HDC2080.</p>
+<p>As from Node-RED 1.3 it is possible to require a Node.js library from inside a function node. All you need to do is declare the library name and the variable name in the setup tab of the function node.</p>
+<p><img alt="Screenshot" src="../images/setup-i2c-bus.png" /></p>
                 
               
               
