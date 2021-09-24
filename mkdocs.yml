@@ -1,0 +1,15 @@
+site_name: Using HDC2080 in Node-RED
+site_author: Andrei Ochmat
+repo_name: aiot-maker/HDC2080
+repo_url: https://github.com/aiot-maker/HDC2080
+
+nav:
+    - Home: index.md
+    - About: about.md
+    - Atencao : atencao.md
+
+theme:
+  name: material
+  icon:
+        logo: material/school
+        repo: fontawesome/brands/github
