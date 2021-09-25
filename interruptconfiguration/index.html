@@ -11,19 +11,19 @@
         <meta name="author" content="Andrei Ochmat">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.3.0">
     
     
       
-        <title>Using HDC2080 in Node-RED</title>
+        <title>Interrupt register - Using HDC2080 in Node-RED</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.8b42a75e.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.8b42a75e.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.3f5d1f46.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
         
       
     
@@ -55,7 +55,7 @@
     <body dir="ltr" data-md-color-scheme="" data-md-color-primary="none" data-md-color-accent="none">
   
     
-    <script>function __prefix(e){return new URL(".",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hdc2080" class="md-skip">
+        <a href="#interrupt-register" class="md-skip">
           Skip to content
         </a>
       
@@ -76,7 +76,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Using HDC2080 in Node-RED" class="md-header__button md-logo" aria-label="Using HDC2080 in Node-RED" data-md-component="logo">
+    <a href=".." title="Using HDC2080 in Node-RED" class="md-header__button md-logo" aria-label="Using HDC2080 in Node-RED" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              HDC2080
+              Interrupt register
             
           </span>
         </div>
@@ -176,7 +176,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Using HDC2080 in Node-RED" class="md-nav__button md-logo" aria-label="Using HDC2080 in Node-RED" data-md-component="logo">
+    <a href=".." title="Using HDC2080 in Node-RED" class="md-nav__button md-logo" aria-label="Using HDC2080 in Node-RED" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 3 1 9l11 6 9-4.91V17h2V9M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/></svg>
@@ -206,6 +206,96 @@
 
   
   
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        HDC2080
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../registers/" class="md-nav__link">
+        Registers
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../reading/" class="md-nav__link">
+        Reading humidity and temperature
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../amm/" class="md-nav__link">
+        Auto measurement mode
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurationregister/" class="md-nav__link">
+        Configuration register
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../measurementregister/" class="md-nav__link">
+        Measurement register
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
     
   
   
@@ -214,24 +304,20 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          HDC2080
+          Interrupt register
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="." class="md-nav__link md-nav__link--active">
-        HDC2080
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Interrupt register
       </a>
       
         
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -241,36 +327,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powering-the-module-33v-only" class="md-nav__link">
-    Powering the module - 3.3V only
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pinout" class="md-nav__link">
-    Pinout
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-get-humidity-and-temperature-values" class="md-nav__link">
-    How to get humidity and temperature values
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-threshold-features" class="md-nav__link">
-    What is the threshold features
+  <a href="#interrupt-register" class="md-nav__link">
+    Interrupt register
   </a>
   
 </li>
@@ -291,97 +349,7 @@
   
   
     <li class="md-nav__item">
-      <a href="registers/" class="md-nav__link">
-        Registers
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="reading/" class="md-nav__link">
-        Reading humidity and temperature
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="amm/" class="md-nav__link">
-        Auto measurement mode
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="configurationregister/" class="md-nav__link">
-        Configuration register
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="measurementregister/" class="md-nav__link">
-        Measurement register
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="interruptconfiguration/" class="md-nav__link">
-        Interrupt register
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="calibration/" class="md-nav__link">
+      <a href="../calibration/" class="md-nav__link">
         Calibration
       </a>
     </li>
@@ -396,7 +364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="nodered/" class="md-nav__link">
+      <a href="../nodered/" class="md-nav__link">
         Node-RED
       </a>
     </li>
@@ -419,8 +387,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -429,36 +395,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#powering-the-module-33v-only" class="md-nav__link">
-    Powering the module - 3.3V only
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pinout" class="md-nav__link">
-    Pinout
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-get-humidity-and-temperature-values" class="md-nav__link">
-    How to get humidity and temperature values
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-threshold-features" class="md-nav__link">
-    What is the threshold features
+  <a href="#interrupt-register" class="md-nav__link">
+    Interrupt register
   </a>
   
 </li>
@@ -475,37 +413,20 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/index.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/interruptconfiguration.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="hdc2080">HDC2080</h1>
-<p>We use a module manufactured by CJMCU which is designed around the Texas Instrument HDC2080 integrated circuit. </p>
-<h2 id="description">Description</h2>
-<p>The HDC2080 is a digital humidity and temperature sensor with very attractive features:</p>
-<ul>
-<li>High accuracy</li>
-<li>Low power consumption</li>
-<li>I2C interface</li>
-<li>Programmable thresholds</li>
-<li>Data Ready / Interruput pin</li>
-</ul>
-<h2 id="powering-the-module-33v-only">Powering the module - 3.3V only</h2>
-<p>The integrated circuit has a supply voltage range of 1.6V to 3.6V. 
-The module doesn´t have a voltage regulator therefore it can only be powered by 3.3V from the Raspberry Pi.</p>
-<h2 id="pinout">Pinout</h2>
-<ul>
-<li>SDC  SLA are the I2C pins</li>
-<li>GND , VCC are the powering pins</li>
-<li>ADD , this input pin allows to select an alternative I2C bus address for the module. When disconnected or connected to GND the module will appear to the bus with 0x40 address. When this pin is connected to 3.3V the I2c address will be 0x41. </li>
-<li>INT , this output pin can be used to signal measurement available in the registers or be used to signal temperature or humidity thresholds.</li>
-</ul>
-<h2 id="how-to-get-humidity-and-temperature-values">How to get humidity and temperature values</h2>
-<p>The sensor will remain in sleep mode until a measurement is triggered. There is a set of three bits in the registers that will tell the sensor to work in auto measurements mode or wait for an I2C command to trigger a single measurement. The values of the measurement are converted from analog to digital and stored in specific registers from where you can read the values. It is possible to configure the sensor to signal in the physical interrupt pin the availability of new measurements.</p>
-<h2 id="what-is-the-threshold-features">What is the threshold features</h2>
-<p>It is possible to program the sensor to trigger an interruption when the temperature or humidity reaches a value too high or too low. These maximum and minimum values (thresholds) are configurable. There are four registers that can be programmed to store them. This feature can be useful in a number of use cases but not necessarily used in others.</p>
-<p><img alt="Screenshot" src="images/module.jpg" /></p>
+                  <h1>Interrupt register</h1>
+                
+                <h2 id="interrupt-register">Interrupt register</h2>
+<p>Here is another register quickly mentioned but important. In general (but not necessarily) this register is configured only once.</p>
+<p>This register will determine which value the interrupt pin will track.</p>
+<p>In our case, as we want to track new temperature and humidity values, we will use it as data ready pin.</p>
+<p>You can however use it to signal humidity and temperatue thresholds.</p>
+<p>Some restrictions apply to the use of the interrupt pin. It can only be assigned to one measurement or threshold. it can not, for instance, signal temperature threshold exceeeded and at the same time be used to signal humidity threshold.</p>
+<p><img alt="Screenshot" src="../images/interrupt-configuration.png" /></p>
                 
               
               
@@ -524,15 +445,30 @@ The module doesn´t have a voltage regulator therefore it can only be powered by
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
+        
+        <a href="../measurementregister/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Measurement register" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Measurement register
+            </div>
+          </div>
+        </a>
+      
       
         
-        <a href="registers/" class="md-footer__link md-footer__link--next" aria-label="Next: Registers" rel="next">
+        <a href="../calibration/" class="md-footer__link md-footer__link--next" aria-label="Next: Calibration" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Registers
+              Calibration
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -563,10 +499,10 @@ The module doesn´t have a voltage regulator therefore it can only be powered by
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": ".", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.f8263e09.min.js", "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.4fc53ad4.min.js"></script>
+      <script src="../assets/javascripts/bundle.4fc53ad4.min.js"></script>
       
     
   </body>

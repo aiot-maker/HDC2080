@@ -289,6 +289,81 @@
   
   
     <li class="md-nav__item">
+      <a href="../amm/" class="md-nav__link">
+        Auto measurement mode
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configurationregister/" class="md-nav__link">
+        Configuration register
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../measurementregister/" class="md-nav__link">
+        Measurement register
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../interruptconfiguration/" class="md-nav__link">
+        Interrupt register
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calibration/" class="md-nav__link">
+        Calibration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../nodered/" class="md-nav__link">
         Node-RED
       </a>
@@ -346,19 +421,30 @@
                   <h1>Reading humidity and temperature</h1>
                 
                 <h2 id="reading-temperature-and-humidity">Reading temperature and humidity</h2>
-<p>Temperature is stores by the sensor in registers 0x00 and 0x01, being 0x00 the least siggnificant (bits 0 to 7) whereas register 0x01 holds the most significant part of the value (bits 8 to 15). As a matter of fact only 14 bits are used but this won´t change how you read the value. First read the register 0x00 and then read register 0x01. Once you get the values it is necessary to apply a formula to translate it to degrees centigrade.</p>
+<p>Temperature is stored by the sensor in registers 0x00 and 0x01, being 0x00 the least significant (bits 0 to 7) whereas register 0x01 holds the most significant part of the value (bits 8 to 15). As a matter of fact only 14 bits are used but this won´t change how you read the value. </p>
+<p>As the value is stored in two 8-byte registers you have a couple of alternatives to get it.</p>
+<p>First alternative is to perform two consecutive byte readings. First read the register 0x00 and then read register 0x01. 
+The other alternative is reading the value in a single shot as a 16 bit word.</p>
+<p>Whatever is the way you get the value it is necessary to apply a formula to translate it to degrees centigrade.</p>
 <p><img alt="Screenshot" src="../images/temperature-equation.png" /></p>
-<p>In JavaScript this formula can be written as:</p>
-<pre><code>let temp = (((256 * r2) + r1) / 65536) * 165 - 40.5;
+<p>In JavaScript this formula can be written as below if you read the registers as byte values:</p>
+<pre><code>msg.payload = (((256 * r2) + r1) / 65536) * 165 - 40.5;
 </code></pre>
 <p>where r1 is the reading of the least significant value and r2 the reading of the  most significant value.</p>
+<p>Now, if you read a single 16 bit value then you want to use a slightly different formula:</p>
+<pre><code>msg.payload = (r / 65536) * 165 - 40.5;
+</code></pre>
+<p>where r is the 16 bit value.</p>
 <p>It is almost the same in regards to reading humidity values but in this case you will get the values form registers 0x02 (least significant) and 0x03 (most significant).</p>
 <p>The formula to apply, according to the datasheet is:</p>
 <p><img alt="Screenshot" src="../images/humidity-equation.png" /></p>
-<p>In JavaScript this formula can be written as:</p>
-<pre><code>let hum = (((256 * r2) + r1) / 65536) * 100;
+<p>In JavaScript this formula can be written as below if you read the registers as byte values:</p>
+<pre><code>msg.payload = (((256 * r2) + r1) / 65536) * 100;
 </code></pre>
 <p>where r1 is the reading of the least significant value and r2 the reading of the  most significant value.</p>
+<p>Likewise, the formula for humidity when you read the registers as a 16 bit value:</p>
+<pre><code>msg.payload = r / 65536 * 100;
+</code></pre>
                 
               
               
@@ -394,13 +480,13 @@
       
       
         
-        <a href="../nodered/" class="md-footer__link md-footer__link--next" aria-label="Next: Node-RED" rel="next">
+        <a href="../amm/" class="md-footer__link md-footer__link--next" aria-label="Next: Auto measurement mode" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Node-RED
+              Auto measurement mode
             </div>
           </div>
           <div class="md-footer__button md-icon">
