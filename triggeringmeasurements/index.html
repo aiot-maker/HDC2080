@@ -486,6 +486,48 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../readingtemperaturehumidity/" class="md-nav__link">
+        Reading temperature and humidity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../readingmax/" class="md-nav__link">
+        Reading Max temperature and humidity
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../softreset/" class="md-nav__link">
+        Soft reset
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -543,7 +585,7 @@
                 
                 <h1 id="triggering-measurements-via-i2c">Triggering measurements via I2C</h1>
 <h2 id="using-the-register-0x0f">Using the register 0x0F</h2>
-<p>In the previous session we programmed the device disabling the auto measurement mode. Let´s see now how to trigger a measurement. I promiss it is super simple.</p>
+<p>In the previous session we programmed the device disabling the auto measurement mode. Let´s see now how to trigger a measurement. It´s not complicated at all.</p>
 <p>All we need to do is write the byte 0x01 to the register.</p>
 <pre><code>const HDC2080_I2C = 0x40;
 
@@ -593,6 +635,21 @@ return msg;
           </div>
         </a>
       
+      
+        
+        <a href="../readingtemperaturehumidity/" class="md-footer__link md-footer__link--next" aria-label="Next: Reading temperature and humidity" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Reading temperature and humidity
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
       
     </nav>
   

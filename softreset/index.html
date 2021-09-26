@@ -16,7 +16,7 @@
     
     
       
-        <title>Thresholds - Using HDC2080 in Node-RED</title>
+        <title>Soft reset - Using HDC2080 in Node-RED</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#thresholds" class="md-skip">
+        <a href="#soft-reset" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Thresholds
+              Soft reset
             
           </span>
         </div>
@@ -206,14 +206,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
       
       
       
@@ -290,51 +288,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Thresholds
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../thresholds/" class="md-nav__link">
         Thresholds
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-threshold-features" class="md-nav__link">
-    What is the threshold features
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -408,12 +366,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -518,11 +478,51 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../softreset/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Soft reset
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Soft reset
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#soft-reset-to-clear-the-maximum-values" class="md-nav__link">
+    Soft reset to clear the maximum values
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -560,8 +560,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#what-is-the-threshold-features" class="md-nav__link">
-    What is the threshold features
+  <a href="#soft-reset-to-clear-the-maximum-values" class="md-nav__link">
+    Soft reset to clear the maximum values
   </a>
   
 </li>
@@ -578,14 +578,33 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/thresholds.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/softreset.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="thresholds">Thresholds</h1>
-<h2 id="what-is-the-threshold-features">What is the threshold features</h2>
-<p>It is possible to program the sensor to trigger an interruption when the temperature or humidity reaches a value too high or too low. These maximum and minimum values (thresholds) are configurable. There are four registers that can be programmed to store them. This feature can be useful in a number of use cases but not necessarily used in others.</p>
+                <h1 id="soft-reset">Soft reset</h1>
+<h2 id="soft-reset-to-clear-the-maximum-values">Soft reset to clear the maximum values</h2>
+<p>The max values can be reset by powering down - powering up the device or doing a soft reset</p>
+<p>In order to soft reset the device we need to set the most significant bit of register 0x0E to value one.</p>
+<p>However the result of this reset is that the other bits of the same register will be set to zero.</p>
+<p>As a matter of fact everything in the device will reset, inclusing configured threshold and interrupt configuration. It means we will lose any previous configuration.</p>
+<p>So, the following code is an example on how to partially save the configuration. A real life code would need to to save all configuration registers.</p>
+<p>This can be achieved with below code:</p>
+<pre><code>const HDC2080_I2C = 0x40;
+
+const hdc = i2c.openSync(1);
+let r1 = hdc.readByteSync(HDC2080_I2C, 0x0E);
+hdc.writeByteSync(HDC2080_I2C, 0x0E, 0x80);
+hdc.writeByteSync(HDC2080_I2C, 0x0E, r1);
+hdc.closeSync();
+
+msg.payload = &quot;0x&quot; + r1.toString(16).padStart(2, '0');
+return msg;
+</code></pre>
+<p>Flow:</p>
+<p><img alt="Screenshot" src="../images/flow6-a.png" /></p>
+<p>If you read the maximum temperature and humidity right after a reset, without triggering a new measurement, you will get the values -40.5 for temperatue and 0 for humidity. This is not an issue at all as long as you are fully aware and use the reading in a proper way. Alternatively force a measurement before reading again the max values.</p>
                 
               
               
@@ -605,7 +624,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../amm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Auto measurement mode" rel="prev">
+        <a href="../readingmax/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Reading Max temperature and humidity" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -614,26 +633,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Auto measurement mode
+              Reading Max temperature and humidity
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../configurationregister/" class="md-footer__link md-footer__link--next" aria-label="Next: Configuration register" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Configuration register
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
