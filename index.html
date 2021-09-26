@@ -16,7 +16,7 @@
     
     
       
-        <title>Using HDC2080 in Node-RED</title>
+        <title>Module - Using HDC2080 in Node-RED</title>
       
     
     
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              HDC2080
+              Module
             
           </span>
         </div>
@@ -209,6 +209,34 @@
     
   
   
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          HDC2080
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HDC2080" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          HDC2080
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
@@ -218,12 +246,12 @@
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
-          HDC2080
+          Module
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <a href="." class="md-nav__link md-nav__link--active">
-        HDC2080
+        Module
       </a>
       
         
@@ -239,6 +267,13 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    Module
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#description" class="md-nav__link">
@@ -282,11 +317,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -297,11 +331,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -312,11 +345,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -327,11 +359,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -342,11 +373,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -357,11 +387,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -372,11 +401,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -384,6 +412,13 @@
       <a href="calibration/" class="md-nav__link">
         Calibration
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -395,10 +430,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Node-RED
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Node-RED" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Node-RED
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="nodered/" class="md-nav__link">
-        Node-RED
+      <a href="i2c/" class="md-nav__link">
+        i2C library
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -427,6 +495,13 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#module" class="md-nav__link">
+    Module
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#description" class="md-nav__link">
@@ -481,9 +556,10 @@
                 
                 
                 <h1 id="hdc2080">HDC2080</h1>
+<h2 id="module">Module</h2>
 <p>We use a module manufactured by CJMCU which is designed around the Texas Instrument HDC2080 integrated circuit. </p>
 <h2 id="description">Description</h2>
-<p>The HDC2080 is a digital humidity and temperature sensor with very attractive features:</p>
+<p>The HDC2080 is a digital humidity and temperature sensor with some appealing features:</p>
 <ul>
 <li>High accuracy</li>
 <li>Low power consumption</li>
@@ -493,13 +569,13 @@
 </ul>
 <h2 id="powering-the-module-33v-only">Powering the module - 3.3V only</h2>
 <p>The integrated circuit has a supply voltage range of 1.6V to 3.6V. 
-The module doesn´t have a voltage regulator therefore it can only be powered by 3.3V from the Raspberry Pi.</p>
+The module doesn´t have a voltage regulator therefore it can only be powered by 3.3V.</p>
 <h2 id="pinout">Pinout</h2>
 <ul>
 <li>SDC  SLA are the I2C pins</li>
-<li>GND , VCC are the powering pins</li>
-<li>ADD , this input pin allows to select an alternative I2C bus address for the module. When disconnected or connected to GND the module will appear to the bus with 0x40 address. When this pin is connected to 3.3V the I2c address will be 0x41. </li>
-<li>INT , this output pin can be used to signal measurement available in the registers or be used to signal temperature or humidity thresholds.</li>
+<li>GND , VCC are the power supply pins</li>
+<li>ADD , this input pin allows to select an alternative I2C bus address for the module. When disconnected or connected to GND the module will appear to the bus with 0x40 address. When this pin is connected to 3.3V the I2C address will be 0x41. </li>
+<li>INT , this output pin can be used to signal that a measurement is available in the registers or be used to signal temperature or humidity thresholds.</li>
 </ul>
 <h2 id="how-to-get-humidity-and-temperature-values">How to get humidity and temperature values</h2>
 <p>The sensor will remain in sleep mode until a measurement is triggered. There is a set of three bits in the registers that will tell the sensor to work in auto measurements mode or wait for an I2C command to trigger a single measurement. The values of the measurement are converted from analog to digital and stored in specific registers from where you can read the values. It is possible to configure the sensor to signal in the physical interrupt pin the availability of new measurements.</p>

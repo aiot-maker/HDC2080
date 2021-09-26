@@ -206,19 +206,46 @@
 
   
   
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          HDC2080
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HDC2080" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          HDC2080
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
   
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        HDC2080
+        Module
       </a>
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -229,11 +256,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
     
@@ -244,47 +270,20 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Reading humidity and temperature
-          <span class="md-nav__icon md-icon"></span>
-        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         Reading humidity and temperature
       </a>
       
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#reading-temperature-and-humidity" class="md-nav__link">
-    Reading temperature and humidity
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -295,11 +294,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -310,11 +308,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -325,11 +322,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -340,11 +336,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -352,6 +347,13 @@
       <a href="../calibration/" class="md-nav__link">
         Calibration
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -363,10 +365,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Node-RED
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Node-RED" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Node-RED
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../nodered/" class="md-nav__link">
-        Node-RED
+      <a href="../i2c/" class="md-nav__link">
+        i2C library
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -387,21 +422,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#reading-temperature-and-humidity" class="md-nav__link">
-    Reading temperature and humidity
-  </a>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -418,14 +440,13 @@
                   </a>
                 
                 
-                  <h1>Reading humidity and temperature</h1>
-                
-                <h2 id="reading-temperature-and-humidity">Reading temperature and humidity</h2>
-<p>Temperature is stored by the sensor in registers 0x00 and 0x01, being 0x00 the least significant (bits 0 to 7) whereas register 0x01 holds the most significant part of the value (bits 8 to 15). As a matter of fact only 14 bits are used but this won´t change how you read the value. </p>
-<p>As the value is stored in two 8-byte registers you have a couple of alternatives to get it.</p>
-<p>First alternative is to perform two consecutive byte readings. First read the register 0x00 and then read register 0x01. 
-The other alternative is reading the value in a single shot as a 16 bit word.</p>
-<p>Whatever is the way you get the value it is necessary to apply a formula to translate it to degrees centigrade.</p>
+                <h1 id="reading-temperature-and-humidity">Reading temperature and humidity</h1>
+<h1 id="reading-temperature">Reading temperature</h1>
+<p>Temperature is stored by the sensor in registers 0x00 and 0x01. Register 0x00 holds the least significant bits (bits0 to 7) and 0x01 the most significant bits (bits 8 to 15). As a matter of fact only 14 bits are used but this won´t change how you read the value. </p>
+<p>As the measurement value is stored in two 8-byte registers you have a couple of ways to get it.</p>
+<p>The first alternative is programming your computer or microcontroler to read two consecutive bytes. First read the register 0x00 and then read register 0x01. 
+The other alternative is reading both registers in a single shot as a 16 bit word.</p>
+<p>Whatever is the way you get the value it is necessary to apply a formula afterward to make sense of the value. Temperature is translated to degrees centigrade. </p>
 <p><img alt="Screenshot" src="../images/temperature-equation.png" /></p>
 <p>In JavaScript this formula can be written as below if you read the registers as byte values:</p>
 <pre><code>msg.payload = (((256 * r2) + r1) / 65536) * 165 - 40.5;
@@ -435,9 +456,11 @@ The other alternative is reading the value in a single shot as a 16 bit word.</p
 <pre><code>msg.payload = (r / 65536) * 165 - 40.5;
 </code></pre>
 <p>where r is the 16 bit value.</p>
+<h1 id="reading-humidity">Reading humidity</h1>
 <p>It is almost the same in regards to reading humidity values but in this case you will get the values form registers 0x02 (least significant) and 0x03 (most significant).</p>
 <p>The formula to apply, according to the datasheet is:</p>
 <p><img alt="Screenshot" src="../images/humidity-equation.png" /></p>
+<p>Humidity is given as a percentage.</p>
 <p>In JavaScript this formula can be written as below if you read the registers as byte values:</p>
 <pre><code>msg.payload = (((256 * r2) + r1) / 65536) * 100;
 </code></pre>
@@ -445,6 +468,7 @@ The other alternative is reading the value in a single shot as a 16 bit word.</p
 <p>Likewise, the formula for humidity when you read the registers as a 16 bit value:</p>
 <pre><code>msg.payload = r / 65536 * 100;
 </code></pre>
+<p>One nice feature of the HDC2080 is that it can be used as a data logger for maximum values of temperature and humidity. These maximum values are stored in internal registers. This is available only for measurements triggered by I2C readings (will not work for auto measurement).</p>
                 
               
               

@@ -206,19 +206,46 @@
 
   
   
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_1">
+          HDC2080
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HDC2080" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          HDC2080
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
   
     <li class="md-nav__item">
       <a href=".." class="md-nav__link">
-        HDC2080
+        Module
       </a>
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -229,11 +256,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -244,11 +270,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
     
@@ -258,6 +283,8 @@
       
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
+      
+        
       
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
@@ -274,6 +301,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -282,8 +311,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#auto-measurement-mode" class="md-nav__link">
-    Auto measurement mode
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
   </a>
   
 </li>
@@ -309,11 +338,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -324,11 +352,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -339,11 +366,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -354,11 +380,10 @@
     </li>
   
 
-    
-      
-      
-      
-
+            
+          
+            
+              
   
   
   
@@ -366,6 +391,13 @@
       <a href="../calibration/" class="md-nav__link">
         Calibration
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -377,10 +409,43 @@
   
   
   
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2">
+          Node-RED
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Node-RED" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Node-RED
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
     <li class="md-nav__item">
-      <a href="../nodered/" class="md-nav__link">
-        Node-RED
+      <a href="../i2c/" class="md-nav__link">
+        i2C library
       </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
     </li>
   
 
@@ -401,6 +466,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -409,8 +476,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#auto-measurement-mode" class="md-nav__link">
-    Auto measurement mode
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
   </a>
   
 </li>
@@ -446,22 +513,18 @@
                   </a>
                 
                 
-                  <h1>Auto measurement mode</h1>
-                
-                <h2 id="auto-measurement-mode">Auto measurement mode</h2>
-<p>The HDC2080 sensor has two modes of operation in regards to generating and storing measurements to the registers.</p>
-<p>The auto measurement mode triggers measurements in programmable intervals.</p>
-<p>You can program the device the automatically measure temperature and humidity from a range of 5 samples per second to a slow rate of 1 sample every 2 minutes.</p>
-<p>As a side note I can´t imagine in which use case someone would need to generate temperature values every five seconds, especially for a sensor like this one which is used to sense ambient temperature.</p>
-<p><img alt="Screenshot" src="../images/amm.png" /></p>
-<p>The second mode of operation is disabling the auto measurement and trigger them with I2C commands. So it is a kind of reading on demand.</p>
+                <h1 id="auto-measurement-mode">Auto measurement mode</h1>
+<h2 id="how-it-works">How it works</h2>
+<p>The HDC2080 sensor has two modes of operation to generate measurements.</p>
+<p>The auto measurement mode triggers measurements in programmable intervals that can range from a slow 1 sample every 2 minutes to a fast pace of 5 samples per second.
+It is hard to imagine in which use case someone would need to generate temperature values every five seconds, especially for a sensor like this one which is used to sense ambient temperature.</p>
+<p>The second mode of operation is triggering them with I2C commands, a kind of reading on demand.</p>
 <h2 id="what-is-the-best-mode-of-operation">What is the best mode of operation ?</h2>
 <p>It really depends on what you need. If you build a stand alone temperature and humidity device, lets say using the HDC2080 connected to a microcontroller and using an OLED display then surely you want to active the auto measurement. </p>
-<p>Now if you hook up the HDC2080 to a single board computer, like the Raspberry PI, and uses Node-RED to control an automation system then most likely you won´t need auto measurement. You can grab temperature and humidity data on demand.</p>
-<pre><code>In our examples in this tutorial we will disable the auto measurement mode and trigger readings via I2C.
-</code></pre>
+<p>Now if you hook up the HDC2080 to a single board computer, like the Raspberry PI, and uses Node-RED to control an automation system then most likely you won´t need auto measurement. You can grab temperature and humidity data as you need.</p>
+<p>In our examples in this tutorial we will disable the auto measurement mode and trigger readings via I2C.</p>
 <h2 id="auto-measurement-can-be-tricky">Auto measurement can be tricky</h2>
-<p>As a matter of fact there is something you will need to overcome when using the auto measurement mode. It may happen that you issue an I2C command to read the temperature and humidity registers at the exact time the HDC2080 is updating its internal registers. That can lead to wrong readings. It is not difficult to reproduce this issue. Just program the device to generate 5 samples per second and start reading the temperature and humidity registers at random. Not even the interrupt pin can help you to circumvent this issue. Apparently the HDC2080 does not have a mechanism to avoid this from happening, at least that I am aware of.</p>
+<p>There is something you will need to overcome when using the auto measurement mode. It may happen that you issue an I2C command to read the temperature and humidity registers at the exact time the HDC2080 is updating its internal registers. That can lead to wrong readings. It is not difficult to reproduce this issue. Just program the device to generate 5 samples per second and start reading the temperature and humidity registers at random. Not even the interrupt pin can help you to circumvent this issue. Apparently the HDC2080 does not have a mechanism to avoid this from happening, at least that I am aware of.</p>
                 
               
               
