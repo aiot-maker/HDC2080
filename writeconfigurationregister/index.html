@@ -16,7 +16,7 @@
     
     
       
-        <title>Interrupt registers - Using HDC2080 in Node-RED</title>
+        <title>Program the configuration register - Using HDC2080 in Node-RED</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#interrupt-registers" class="md-skip">
+        <a href="#programming-the-configuration-register" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Interrupt registers
+              Program the configuration register
             
           </span>
         </div>
@@ -206,14 +206,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
       
       
       
@@ -332,58 +330,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Interrupt registers
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../interruptregisters/" class="md-nav__link">
         Interrupt registers
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#interrupt-status-register-0x04" class="md-nav__link">
-    Interrupt status register (0x04)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interrupt-configuration-register-0x07" class="md-nav__link">
-    Interrupt configuration register (0x07)
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -415,12 +366,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -469,11 +422,58 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../writeconfigurationregister/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Program the configuration register
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Program the configuration register
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#reading-the-configuration-register" class="md-nav__link">
+    Reading the configuration register
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-to-the-configuration-register" class="md-nav__link">
+    Writing to the configuration register
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -511,15 +511,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#interrupt-status-register-0x04" class="md-nav__link">
-    Interrupt status register (0x04)
+  <a href="#reading-the-configuration-register" class="md-nav__link">
+    Reading the configuration register
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#interrupt-configuration-register-0x07" class="md-nav__link">
-    Interrupt configuration register (0x07)
+  <a href="#writing-to-the-configuration-register" class="md-nav__link">
+    Writing to the configuration register
   </a>
   
 </li>
@@ -536,24 +536,45 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/interruptregisters.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/writeconfigurationregister.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="interrupt-registers">Interrupt registers</h1>
-<h2 id="interrupt-status-register-0x04">Interrupt status register (0x04)</h2>
-<p>Here is another important register even if it is used only once in the lifecycle of your project. This register will determine which value the interrupt pin will track.</p>
-<p><img alt="Screenshot" src="../images/interrupt-status.png" /></p>
-<p>In our case, as we want to track new temperature and humidity values, we will use it as data ready pin.</p>
-<p>You can however use it to signal humidity and temperatue thresholds.</p>
-<h2 id="interrupt-configuration-register-0x07">Interrupt configuration register (0x07)</h2>
-<p><img alt="Screenshot" src="../images/interrupt-configuration.png" /></p>
-<p>Some restrictions apply to the use of the interrupt pin. It can only be assigned to one measurement or threshold. it can not, for instance, signal temperature threshold exceeded and at the same time be used to signal humidity threshold.</p>
-<p>If your configure the bits of this register to enable the interrupt for two different thresholds the device will apply a priority rule too deterine what the interrupt pin will signal.</p>
-<p>Here below the excerpt of the datasheet that explains the priority rule:</p>
-<p><img alt="Screenshot" src="../images/interrupt-priority.png" /></p>
-<p>Later on we will do an exercise by forcing a temperature rising on the device having a threshold set for high temperature. We want to see a led blinking when the interrupt is triggered.</p>
+                <h1 id="programming-the-configuration-register">Programming the configuration register</h1>
+<p>Before we can read temperature and humidity we have to program the device behaviour. In this example we will program it with the auto measurement disabled, in which case you have to trigger the reading via I2C commands.</p>
+<p>So, let´s see how to read and write to the configuration register 0x0E.</p>
+<h2 id="reading-the-configuration-register">Reading the configuration register</h2>
+<p>A single function node with below code will do the magic:</p>
+<pre><code>const HDC2080_I2C = 0x40;
+
+const hdc = i2c.openSync(1);
+let r1 = hdc.readByteSync(HDC2080_I2C, 0x0E);
+hdc.closeSync();
+
+msg.payload = &quot;0x&quot; + r1.toString(16).padStart(2, '0');
+return msg;
+</code></pre>
+<p>This code will open the I2C bus, read the value (8-bits) from register 0x0E and will close the bus. The result will be formated as a hexadecimal string and stored in msg.payload.</p>
+<p>Below how the flow looks like:</p>
+<p><img alt="Screenshot" src="../images/flow2-a.png" /></p>
+<p>and below what I got in the debug panel. When you run this flow for the first time sure enough you will see a different value.</p>
+<p><img alt="Screenshot" src="../images/flow2-b.png" /></p>
+<h2 id="writing-to-the-configuration-register">Writing to the configuration register</h2>
+<p>We want to disable the auto measurement mode. For that purpose we have to write the value 0x06 to the configuration register.</p>
+<p>The code is straightforward:</p>
+<pre><code>const HDC2080_I2C = 0x40;
+
+const hdc = i2c.openSync(1);
+hdc.writeByteSync(HDC2080_I2C, 0x0E, 0x06);
+hdc.closeSync();
+
+msg.payload = &quot;0x06&quot;;
+return msg;
+</code></pre>
+<p>Below how the flow looks like:</p>
+<p><img alt="Screenshot" src="../images/flow2-c.png" /></p>
+<p>If you want to assure the value was correctly stored in the register you can run agina the flow that reads the value from the register. There will be no surprises here.</p>
                 
               
               
@@ -573,7 +594,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../measurementregister/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Measurement register" rel="prev">
+        <a href="../flowmanufacturer/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Read manufacturer ID" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -582,26 +603,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Measurement register
+              Read manufacturer ID
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../calibration/" class="md-footer__link md-footer__link--next" aria-label="Next: Calibration" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Calibration
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
