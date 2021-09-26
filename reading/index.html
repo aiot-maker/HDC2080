@@ -302,6 +302,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../thresholds/" class="md-nav__link">
+        Thresholds
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../configurationregister/" class="md-nav__link">
         Configuration register
       </a>
@@ -330,8 +344,8 @@
   
   
     <li class="md-nav__item">
-      <a href="../interruptconfiguration/" class="md-nav__link">
-        Interrupt register
+      <a href="../interruptregisters/" class="md-nav__link">
+        Interrupt registers
       </a>
     </li>
   
@@ -441,6 +455,8 @@
                 
                 
                 <h1 id="reading-temperature-and-humidity">Reading temperature and humidity</h1>
+<h1 id="how-to-get-humidity-and-temperature-values">How to get humidity and temperature values</h1>
+<p>The sensor will remain in sleep mode until a measurement is triggered. There is a set of three bits in the registers that will tell the sensor to work in auto measurements mode or wait for an I2C command to trigger a single measurement. The values of the measurement are converted from analog to digital and stored in specific registers from where you can read the values. It is possible to configure the sensor to signal in the physical interrupt pin the availability of new measurements.</p>
 <h1 id="reading-temperature">Reading temperature</h1>
 <p>Temperature is stored by the sensor in registers 0x00 and 0x01. Register 0x00 holds the least significant bits (bits0 to 7) and 0x01 the most significant bits (bits 8 to 15). As a matter of fact only 14 bits are used but this won´t change how you read the value. </p>
 <p>As the measurement value is stored in two 8-byte registers you have a couple of ways to get it.</p>

@@ -16,7 +16,7 @@
     
     
       
-        <title>Interrupt register - Using HDC2080 in Node-RED</title>
+        <title>Thresholds - Using HDC2080 in Node-RED</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#interrupt-register" class="md-skip">
+        <a href="#thresholds" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Interrupt register
+              Thresholds
             
           </span>
         </div>
@@ -290,6 +290,60 @@
               
   
   
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Thresholds
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Thresholds
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-threshold-features" class="md-nav__link">
+    What is the threshold features
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
   
     <li class="md-nav__item">
       <a href="../configurationregister/" class="md-nav__link">
@@ -318,47 +372,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Interrupt register
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        Interrupt register
+    <li class="md-nav__item">
+      <a href="../interruptregisters/" class="md-nav__link">
+        Interrupt registers
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#interrupt-register" class="md-nav__link">
-    Interrupt register
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -448,6 +466,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -456,8 +476,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#interrupt-register" class="md-nav__link">
-    Interrupt register
+  <a href="#what-is-the-threshold-features" class="md-nav__link">
+    What is the threshold features
   </a>
   
 </li>
@@ -474,20 +494,14 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/interruptconfiguration.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/thresholds.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                  <h1>Interrupt register</h1>
-                
-                <h2 id="interrupt-register">Interrupt register</h2>
-<p>Here is another register quickly mentioned but important. In general (but not necessarily) this register is configured only once.</p>
-<p>This register will determine which value the interrupt pin will track.</p>
-<p>In our case, as we want to track new temperature and humidity values, we will use it as data ready pin.</p>
-<p>You can however use it to signal humidity and temperatue thresholds.</p>
-<p>Some restrictions apply to the use of the interrupt pin. It can only be assigned to one measurement or threshold. it can not, for instance, signal temperature threshold exceeeded and at the same time be used to signal humidity threshold.</p>
-<p><img alt="Screenshot" src="../images/interrupt-configuration.png" /></p>
+                <h1 id="thresholds">Thresholds</h1>
+<h2 id="what-is-the-threshold-features">What is the threshold features</h2>
+<p>It is possible to program the sensor to trigger an interruption when the temperature or humidity reaches a value too high or too low. These maximum and minimum values (thresholds) are configurable. There are four registers that can be programmed to store them. This feature can be useful in a number of use cases but not necessarily used in others.</p>
                 
               
               
@@ -507,7 +521,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../measurementregister/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Measurement register" rel="prev">
+        <a href="../amm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Auto measurement mode" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -516,20 +530,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Measurement register
+              Auto measurement mode
             </div>
           </div>
         </a>
       
       
         
-        <a href="../calibration/" class="md-footer__link md-footer__link--next" aria-label="Next: Calibration" rel="next">
+        <a href="../configurationregister/" class="md-footer__link md-footer__link--next" aria-label="Next: Configuration register" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Calibration
+              Configuration register
             </div>
           </div>
           <div class="md-footer__button md-icon">
