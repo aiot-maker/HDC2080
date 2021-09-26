@@ -470,18 +470,18 @@
                 
                 <h1 id="read-manufacturer-id">Read manufacturer ID</h1>
 <p>In this first flow we will do something very simple: read the registers that holds the manufacturer ID. These are the registers 0xFC and 0xFD.</p>
-<p>For that purpose we will use a function node. The code used is straightforward. We open the bus and read a 16-bit word with and then close the bus. The reading is formatted to be displayes as an hexadecimal value.</p>
+<p>For that purpose we will use a function node. The code is straightforward. We open the bus and read a 16-bit word with and then close the bus. The reading is formatted to be displayed as an hexadecimal value.</p>
 <p>Here below the code inside the funcion node:</p>
 <pre><code>const HDC2080_I2C = 0x40;
 
 const hdc = i2c.openSync(1);
-let r1 = hdc.readByteSync(HDC2080_I2C, 0xFC);
-let r2 = hdc.readByteSync(HDC2080_I2C, 0xFD);
+let r = hdc.readWordSync(HDC2080_I2C, 0xFC);
 hdc.closeSync();
 
-msg.payload = `Manufacturer ID: 0x${r2.toString(16)}${r1.toString(16)}`
+msg.payload = `Manufacturer ID: 0x${r.toString(16)}`;
 return msg;
 </code></pre>
+<p>and don´t forget to configure the setup tab of the function node as shown in the previous section, otherwise your flow won´t work.</p>
 <p>Below the flow:</p>
 <p><img alt="Screenshot" src="../images/flow1-a.png" /></p>
 <p>Below the result in the debug panel:</p>
