@@ -586,7 +586,7 @@
                 <h1 id="triggering-measurements-via-i2c">Triggering measurements via I2C</h1>
 <h2 id="using-the-register-0x0f">Using the register 0x0F</h2>
 <p>In the previous session we programmed the device disabling the auto measurement mode. Let´s see now how to trigger a measurement. It´s not complicated at all.</p>
-<p>All we need to do is write the byte 0x01 to the register.</p>
+<p>All we need to do is write the byte 0x01 to the register 0x0F.</p>
 <pre><code>const HDC2080_I2C = 0x40;
 
 const hdc = i2c.openSync(1);
@@ -597,11 +597,14 @@ msg.payload = &quot;Measurement triggered&quot;;
 
 return msg;
 </code></pre>
+<p>Below the flow for you to copy and import to Node-RED.</p>
+<pre><code>[{&quot;id&quot;:&quot;45db449f2dcf4ce1&quot;,&quot;type&quot;:&quot;comment&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Flow 3 : Trigger measurement via I2C&quot;,&quot;info&quot;:&quot;&quot;,&quot;x&quot;:250,&quot;y&quot;:540,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;4635f68954c0b4f8&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to run&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:180,&quot;y&quot;:600,&quot;wires&quot;:[[&quot;c6c3eb7076945329&quot;]]},{&quot;id&quot;:&quot;c6c3eb7076945329&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Trigger measurement&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\n\nconst hdc = i2c.openSync(1);\nhdc.writeByteSync(HDC2080_I2C, 0x0F, 0x01);\nhdc.closeSync();\n\nmsg.payload = \&quot;Measurement triggered\&quot;;\n\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:410,&quot;y&quot;:600,&quot;wires&quot;:[[&quot;133fd4465ffca89a&quot;]]},{&quot;id&quot;:&quot;133fd4465ffca89a&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug flow3&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;payload&quot;,&quot;targetType&quot;:&quot;msg&quot;,&quot;statusVal&quot;:&quot;&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:650,&quot;y&quot;:600,&quot;wires&quot;:[]}]
+</code></pre>
 <p>This is how the flow looks like:</p>
 <p><img alt="Screenshot" src="../images/flow3-a.png" /></p>
-<p>You will see only a notification in the debug panel but rest assured that values have been written in the internal registers. </p>
+<p>You will see only a notification in the debug panel but rest assured that values have been written to the internal registers. </p>
 <p><img alt="Screenshot" src="../images/flow3-b.png" /></p>
-<p>We will learn how to grab this values in the next session.</p>
+<p>We will learn how to grab these values in the next session.</p>
                 
               
               

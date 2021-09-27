@@ -599,7 +599,7 @@
                 
                 <h1 id="reading-temperature-and-humidity">Reading temperature and humidity</h1>
 <h2 id="reading-temperature">Reading temperature</h2>
-<p>This code in a function node enable us to read temperature values stores in the registers of the HDC2080.</p>
+<p>This code in a function node enable us to read temperature values stored in the registers of the HDC2080.</p>
 <pre><code>const HDC2080_I2C = 0x40;
 
 let hdc = i2c.openSync(1);
@@ -609,6 +609,9 @@ hdc.closeSync();
 msg.payload = (r / 65536) * 165 - 40.5;
 
 return msg;
+</code></pre>
+<p>Below the flow for you to copy and import to Node-RED.</p>
+<pre><code>[{&quot;id&quot;:&quot;48d7c05adb4a40de&quot;,&quot;type&quot;:&quot;comment&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Flow 4 : Read temperature&quot;,&quot;info&quot;:&quot;&quot;,&quot;x&quot;:210,&quot;y&quot;:700,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;219d5a07b5b3d622&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to run&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:180,&quot;y&quot;:760,&quot;wires&quot;:[[&quot;ab3d99f63335f7f8&quot;]]},{&quot;id&quot;:&quot;ab3d99f63335f7f8&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Read temperature&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\n\nlet hdc = i2c.openSync(1);\nlet r = hdc.readWordSync(HDC2080_I2C, 0x00);\nhdc.closeSync();\n\nmsg.payload = (r / 65536) * 165 - 40.5;\n\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:370,&quot;y&quot;:760,&quot;wires&quot;:[[&quot;d3cf046c0705ecb6&quot;]]},{&quot;id&quot;:&quot;d3cf046c0705ecb6&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug flow4&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;payload&quot;,&quot;targetType&quot;:&quot;msg&quot;,&quot;statusVal&quot;:&quot;&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:570,&quot;y&quot;:760,&quot;wires&quot;:[]}]
 </code></pre>
 <p>Here the look of the flow:</p>
 <p><img alt="Screenshot" src="../images/flow4-a.png" /></p>
@@ -626,10 +629,17 @@ msg.payload = r / 65536 * 100;
 
 return msg;
 </code></pre>
+<p>Below the flow for you to copy and import to Node-RED.</p>
+<pre><code>[{&quot;id&quot;:&quot;3c8ea04b57908649&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to run&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:180,&quot;y&quot;:920,&quot;wires&quot;:[[&quot;4875a12e866cb662&quot;]]},{&quot;id&quot;:&quot;5e30deb66330b5d9&quot;,&quot;type&quot;:&quot;comment&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Flow4 : Read Humidity&quot;,&quot;info&quot;:&quot;&quot;,&quot;x&quot;:200,&quot;y&quot;:860,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;4875a12e866cb662&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Read humidity&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\n\nlet hdc = i2c.openSync(1);\nlet r = hdc.readWordSync(HDC2080_I2C, 0x02);\nhdc.closeSync();\n\nmsg.payload = r / 65536 * 100;\n\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:360,&quot;y&quot;:920,&quot;wires&quot;:[[&quot;1cec6607f73c9622&quot;]]},{&quot;id&quot;:&quot;1cec6607f73c9622&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug flow4&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;payload&quot;,&quot;targetType&quot;:&quot;msg&quot;,&quot;statusVal&quot;:&quot;&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:570,&quot;y&quot;:920,&quot;wires&quot;:[]}]
+</code></pre>
 <p>and here below the look of the flow:</p>
 <p><img alt="Screenshot" src="../images/flow4-b.png" /></p>
 <p>and this is the result in the debug panel:</p>
 <p><img alt="Screenshot" src="../images/flow4-d.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We did not bother limiting the number of decimal digits for the measurement. Given the accuracy of the sensor it makes no sense use more than one digit after the decimal point.</p>
+</div>
                 
               
               

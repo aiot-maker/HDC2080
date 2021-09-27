@@ -551,13 +551,23 @@ hdc.closeSync();
 msg.payload = `Manufacturer ID: 0x${r.toString(16)}`;
 return msg;
 </code></pre>
-<p>and don´t forget to configure the setup tab of the function node as shown in the previous section, otherwise your flow won´t work.</p>
-<p>Below the flow:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don´t forget to configure the setup tab of the function node as shown in the previous section, otherwise your flow won´t work.</p>
+</div>
+<p>Below the flow for you to copy and import to Node-RED. </p>
+<pre><code>[{&quot;id&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;type&quot;:&quot;tab&quot;,&quot;label&quot;:&quot;Flow 1&quot;,&quot;disabled&quot;:false,&quot;info&quot;:&quot;&quot;},{&quot;id&quot;:&quot;e207ea6471f306f4&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to run&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:180,&quot;y&quot;:140,&quot;wires&quot;:[[&quot;2ca8939ae6b0ac08&quot;]]},{&quot;id&quot;:&quot;8f852f4ea6291a5e&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug flow1&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:true,&quot;complete&quot;:&quot;payload&quot;,&quot;targetType&quot;:&quot;msg&quot;,&quot;statusVal&quot;:&quot;payload&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:630,&quot;y&quot;:140,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;3676564ac6445fe1&quot;,&quot;type&quot;:&quot;comment&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Flow 1 : Read manufacturer ID&quot;,&quot;info&quot;:&quot;&quot;,&quot;x&quot;:210,&quot;y&quot;:80,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;2ca8939ae6b0ac08&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Read manufacturer ID&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\n\nconst hdc = i2c.openSync(1);\nlet r = hdc.readWordSync(HDC2080_I2C, 0xFC);\nhdc.closeSync();\n\nmsg.payload = `Manufacturer ID: 0x${r.toString(16)}`;\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:400,&quot;y&quot;:140,&quot;wires&quot;:[[&quot;8f852f4ea6291a5e&quot;]]}]
+</code></pre>
+<p>This is what you will see in Node-RED editor after importing the above flow.</p>
 <p><img alt="Screenshot" src="../images/flow1-a.png" /></p>
 <p>Below the result in the debug panel:</p>
 <p><img alt="Screenshot" src="../images/flow1-b.png" /></p>
-<p>But.. wait. The datasheet says we should read 0x4954. Maybe your code is wrong ?  I don´t think so. Most likely there is a typo in the datasheet. Or perhaps I am using a counterfeit device that had the manufacturer ID changed on purpose to avoid legal sanctions ?  No, very unlikely.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>But.. wait. The datasheet says we should read 0x4954. Maybe our code is wrong ?  I don´t think so. Most likely there is a typo in the datasheet. Or perhaps I am using a counterfeit device that had the manufacturer ID changed on purpose to avoid legal sanctions ?  No, very unlikely.</p>
+</div>
 <p><img alt="Screenshot" src="../images/flow1-c.png" /></p>
+<p>This flow was a good start point as we could read a register without programming before the device. In the next session we will learn how to write to registers and configure the device. </p>
                 
               
               

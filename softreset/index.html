@@ -599,11 +599,17 @@ So, the following code is an example on how to partially save the configuration.
 const hdc = i2c.openSync(1);
 let r1 = hdc.readByteSync(HDC2080_I2C, 0x0E);
 hdc.writeByteSync(HDC2080_I2C, 0x0E, 0x80);
-hdc.writeByteSync(HDC2080_I2C, 0x0E, r1);
 hdc.closeSync();
+
+const hdc1 = i2c.openSync(1);
+hdc1.writeByteSync(HDC2080_I2C, 0x0E, r1);
+hdc1.closeSync();
 
 msg.payload = &quot;0x&quot; + r1.toString(16).padStart(2, '0');
 return msg;
+</code></pre>
+<p>Below the flow for you to copy and import to Node-RED.</p>
+<pre><code>[{&quot;id&quot;:&quot;53fbefa876532be8&quot;,&quot;type&quot;:&quot;comment&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Flow 6 : Soft reset&quot;,&quot;info&quot;:&quot;&quot;,&quot;x&quot;:190,&quot;y&quot;:1360,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;aa6dd67bf670c943&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to run&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:180,&quot;y&quot;:1420,&quot;wires&quot;:[[&quot;3a16126dc33f9eb1&quot;]]},{&quot;id&quot;:&quot;3a16126dc33f9eb1&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Soft reset&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\n\nconst hdc = i2c.openSync(1);\nlet r1 = hdc.readByteSync(HDC2080_I2C, 0x0E);\nhdc.writeByteSync(HDC2080_I2C, 0x0E, 0x80);\nhdc.closeSync();\n\nconst hdc1 = i2c.openSync(1);\nhdc1.writeByteSync(HDC2080_I2C, 0x0E, r1);\nhdc1.closeSync();\n\nmsg.payload = \&quot;0x\&quot; + r1.toString(16).padStart(2, '0');\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:340,&quot;y&quot;:1420,&quot;wires&quot;:[[&quot;9e5323c9ae142a3e&quot;]]},{&quot;id&quot;:&quot;9e5323c9ae142a3e&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug flow6&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;payload&quot;,&quot;targetType&quot;:&quot;msg&quot;,&quot;statusVal&quot;:&quot;&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:510,&quot;y&quot;:1420,&quot;wires&quot;:[]}]
 </code></pre>
 <p>Flow:</p>
 <p><img alt="Screenshot" src="../images/flow6-a.png" /></p>
