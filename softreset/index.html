@@ -588,9 +588,12 @@
 <p>The max values can be reset by powering down - powering up the device or doing a soft reset</p>
 <p>In order to soft reset the device we need to set the most significant bit of register 0x0E to value one.</p>
 <p>However the result of this reset is that the other bits of the same register will be set to zero.</p>
-<p>As a matter of fact everything in the device will reset, inclusing configured threshold and interrupt configuration. It means we will lose any previous configuration.</p>
-<p>So, the following code is an example on how to partially save the configuration. A real life code would need to to save all configuration registers.</p>
-<p>This can be achieved with below code:</p>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>As a matter of fact everything in the device will reset, including configured thresholds and interrupt configuration. It means we will lose any previous configuration.
+So, the following code is an example on how to partially save the configuration. A real life code would need to to save all configuration registers before doing a soft reset.</p>
+</div>
+<p>Code below shows how to save the configuration register (0x0E) and reset the device:</p>
 <pre><code>const HDC2080_I2C = 0x40;
 
 const hdc = i2c.openSync(1);
