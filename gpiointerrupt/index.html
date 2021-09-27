@@ -16,7 +16,7 @@
     
     
       
-        <title>Reading temperature and humidity - Using HDC2080 in Node-RED</title>
+        <title>GPIO pin for interrupt - Using HDC2080 in Node-RED</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#reading-temperature-and-humidity" class="md-skip">
+        <a href="#configuring-a-gpio-pin-for-interrupt" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Reading temperature and humidity
+              GPIO pin for interrupt
             
           </span>
         </div>
@@ -450,58 +450,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Reading temperature and humidity
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../readingtemperaturehumidity/" class="md-nav__link">
         Reading temperature and humidity
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#reading-temperature" class="md-nav__link">
-    Reading temperature
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-humidity" class="md-nav__link">
-    Reading humidity
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -553,11 +506,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../gpiointerrupt/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         GPIO pin for interrupt
       </a>
+      
     </li>
   
 
@@ -588,28 +551,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#reading-temperature" class="md-nav__link">
-    Reading temperature
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reading-humidity" class="md-nav__link">
-    Reading humidity
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -620,54 +561,26 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/readingtemperaturehumidity.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/gpiointerrupt.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="reading-temperature-and-humidity">Reading temperature and humidity</h1>
-<h2 id="reading-temperature">Reading temperature</h2>
-<p>This code in a function node enable us to read temperature values stored in the registers of the HDC2080.</p>
-<pre><code>const HDC2080_I2C = 0x40;
-
-let hdc = i2c.openSync(1);
-let r = hdc.readWordSync(HDC2080_I2C, 0x00);
-hdc.closeSync();
-
-msg.payload = (r / 65536) * 165 - 40.5;
-
-return msg;
-</code></pre>
-<p>Below the flow for you to copy and import to Node-RED.</p>
-<pre><code>[{&quot;id&quot;:&quot;48d7c05adb4a40de&quot;,&quot;type&quot;:&quot;comment&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Flow 4 : Read temperature&quot;,&quot;info&quot;:&quot;&quot;,&quot;x&quot;:210,&quot;y&quot;:700,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;219d5a07b5b3d622&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to run&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:180,&quot;y&quot;:760,&quot;wires&quot;:[[&quot;ab3d99f63335f7f8&quot;]]},{&quot;id&quot;:&quot;ab3d99f63335f7f8&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Read temperature&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\n\nlet hdc = i2c.openSync(1);\nlet r = hdc.readWordSync(HDC2080_I2C, 0x00);\nhdc.closeSync();\n\nmsg.payload = (r / 65536) * 165 - 40.5;\n\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:370,&quot;y&quot;:760,&quot;wires&quot;:[[&quot;d3cf046c0705ecb6&quot;]]},{&quot;id&quot;:&quot;d3cf046c0705ecb6&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug flow4&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;payload&quot;,&quot;targetType&quot;:&quot;msg&quot;,&quot;statusVal&quot;:&quot;&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:570,&quot;y&quot;:760,&quot;wires&quot;:[]}]
-</code></pre>
-<p>Here the look of the flow:</p>
-<p><img alt="Screenshot" src="../images/flow4-a.png" /></p>
-<p>When you click the inject node you will get as result a mesurement displayed in the debug panel:</p>
-<p><img alt="Screenshot" src="../images/flow4-c.png" /></p>
-<h2 id="reading-humidity">Reading humidity</h2>
-<p>This code reads the humidity registers:</p>
-<pre><code>const HDC2080_I2C = 0x40;
-
-let hdc = i2c.openSync(1);
-let r = hdc.readWordSync(HDC2080_I2C, 0x02);
-hdc.closeSync();
-
-msg.payload = r / 65536 * 100;
-
-return msg;
-</code></pre>
-<p>Below the flow for you to copy and import to Node-RED.</p>
-<pre><code>[{&quot;id&quot;:&quot;3c8ea04b57908649&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to run&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:180,&quot;y&quot;:920,&quot;wires&quot;:[[&quot;4875a12e866cb662&quot;]]},{&quot;id&quot;:&quot;5e30deb66330b5d9&quot;,&quot;type&quot;:&quot;comment&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Flow4 : Read Humidity&quot;,&quot;info&quot;:&quot;&quot;,&quot;x&quot;:200,&quot;y&quot;:860,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;4875a12e866cb662&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Read humidity&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\n\nlet hdc = i2c.openSync(1);\nlet r = hdc.readWordSync(HDC2080_I2C, 0x02);\nhdc.closeSync();\n\nmsg.payload = r / 65536 * 100;\n\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:360,&quot;y&quot;:920,&quot;wires&quot;:[[&quot;1cec6607f73c9622&quot;]]},{&quot;id&quot;:&quot;1cec6607f73c9622&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug flow4&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;payload&quot;,&quot;targetType&quot;:&quot;msg&quot;,&quot;statusVal&quot;:&quot;&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:570,&quot;y&quot;:920,&quot;wires&quot;:[]}]
-</code></pre>
-<p>and here below the look of the flow:</p>
-<p><img alt="Screenshot" src="../images/flow4-b.png" /></p>
-<p>and this is the result in the debug panel:</p>
-<p><img alt="Screenshot" src="../images/flow4-d.png" /></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>We did not bother limiting the number of decimal digits for the measurement. Given the accuracy of the sensor it makes no sense using more than one digit after the decimal point.</p>
-</div>
+                <h1 id="configuring-a-gpio-pin-for-interrupt">Configuring a GPIO pin for interrupt</h1>
+<p>We are going to add a Raspberry PI specific node to our flow.</p>
+<p>Search the node palete in the left side of the editor for the node <code>rpi-gpio in</code> and drag it to the canvas along with a debug node.</p>
+<p><img alt="Screenshot" src="../images/flow7-pin-0.png" /></p>
+<p>Double click the node to enter the configuration setup and use below configuration.</p>
+<p><img alt="Screenshot" src="../images/flow7-pin-1.png" /></p>
+<p>Now deploy your flow to ensure the configuration is saved and go find a jumper cable to connect the INT pin in the HDC2080 to the pin 11 in your Raspberry PI.</p>
+<p>When the wiring is complete run your flow by clicking in the inject node to trigger a measurement (Flow 3 : Trigger measurement via I2C).</p>
+<p>If all is good you will see some data being displayed in the debug node.</p>
+<p><img alt="Screenshot" src="../images/flow7-pin-2.png" /></p>
+<p>When you trigerred the measurement the interrupt pin changed from low level (level 0) to high level (level 1) and this is what the debug panel shows you. The GPIO pin is telling you that there ar enew measurements available in the temperature and humidity registers.</p>
+<p>Let´s then grab the latest measument by clicking in the inject node that reads temperatue (Flow 4 : Read temperature).</p>
+<p>Watch the debug panel.</p>
+<p><img alt="Screenshot" src="../images/flow7-pin-3.png" /></p>
+<p>You got  the latest temperature displayed in th debug panel and can see that the interrupt pin changed again to low level. This is exactly what we were expecting.</p>
                 
               
               
@@ -687,7 +600,7 @@ return msg;
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../triggeringmeasurements/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Triggering measurements" rel="prev">
+        <a href="../interruptpin/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Handling the interrupt pin" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -696,26 +609,11 @@ return msg;
               <span class="md-footer__direction">
                 Previous
               </span>
-              Triggering measurements
+              Handling the interrupt pin
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../readingmax/" class="md-footer__link md-footer__link--next" aria-label="Next: Reading Max temperature and humidity" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Reading Max temperature and humidity
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
