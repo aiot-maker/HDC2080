@@ -16,7 +16,7 @@
     
     
       
-        <title>Thresholds - Using HDC2080 in Node-RED</title>
+        <title>Playing with the heater - Using HDC2080 in Node-RED</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#thresholds" class="md-skip">
+        <a href="#playing-with-the-heater" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Thresholds
+              Playing with the heater
             
           </span>
         </div>
@@ -206,14 +206,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
       
       
       
@@ -290,51 +288,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Thresholds
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../thresholds/" class="md-nav__link">
         Thresholds
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-threshold-features" class="md-nav__link">
-    What is the threshold features
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -408,12 +366,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
       
       
       
@@ -574,11 +534,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../heating/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Playing with the heater
       </a>
+      
     </li>
   
 
@@ -623,21 +593,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#what-is-the-threshold-features" class="md-nav__link">
-    What is the threshold features
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -648,14 +603,30 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/thresholds.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/heating.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="thresholds">Thresholds</h1>
-<h2 id="what-is-the-threshold-features">What is the threshold features</h2>
-<p>It is possible to program the sensor to trigger an interruption when the temperature or humidity reaches a value too high or too low. These maximum and minimum values (thresholds) are configurable. There are four registers that can be programmed to store them. This feature can be useful in a number of use cases but not necessarily used in others.</p>
+                <h1 id="playing-with-the-heater">Playing with the heater</h1>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>It is dangerous to play with the heater. Overheating may damage the device.
+You have been warned. Use at your own risk.</p>
+</div>
+<p>The following flow will turn on the heater for a few seconds and then will (hopefully) power it off.</p>
+<p>During this time you can check the temperature register (Flow 4) to see the increase. Auto measurement is enabled to generated a new value every 5 seconds.</p>
+<p><img alt="Screenshot" src="../images/flow9-a.png" /></p>
+<p>Below the flow for you to copy and import to Node-RED.</p>
+<pre><code>[{&quot;id&quot;:&quot;ce2acd20c5ad696e&quot;,&quot;type&quot;:&quot;comment&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Flow 9 : Playing with the heater - 1 sample every 5 seconds&quot;,&quot;info&quot;:&quot;&quot;,&quot;x&quot;:320,&quot;y&quot;:2220,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;e3b67be803fb22e1&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to heat&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:210,&quot;y&quot;:2300,&quot;wires&quot;:[[&quot;fc763414380a8a97&quot;]]},{&quot;id&quot;:&quot;fc763414380a8a97&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Heater ON - 0x4E&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\n\nconst hdc = i2c.openSync(1);\nhdc.writeByteSync(HDC2080_I2C, 0x0E, 0x4E);\nhdc.closeSync();\n\nmsg.payload = \&quot;The heater is ON - Check temperature register\&quot;;\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:400,&quot;y&quot;:2300,&quot;wires&quot;:[[&quot;069f453717167d28&quot;,&quot;36d0ce4a604bab1c&quot;]]},{&quot;id&quot;:&quot;538a3ccd51affbb3&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Heater OFF - 0x46&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\n\nconst hdc = i2c.openSync(1);\nhdc.writeByteSync(HDC2080_I2C, 0x0E, 0x46);\nhdc.closeSync();\n\nmsg.payload = \&quot;The heater is OFF\&quot;;\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:570,&quot;y&quot;:2420,&quot;wires&quot;:[[&quot;8b003c2060dbda78&quot;]]},{&quot;id&quot;:&quot;6e7c00ad4c07de04&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to cool off&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:220,&quot;y&quot;:2420,&quot;wires&quot;:[[&quot;538a3ccd51affbb3&quot;]]},{&quot;id&quot;:&quot;069f453717167d28&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug Flow9&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;payload&quot;,&quot;targetType&quot;:&quot;msg&quot;,&quot;statusVal&quot;:&quot;&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:670,&quot;y&quot;:2300,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;8b003c2060dbda78&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug Flow9&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;payload&quot;,&quot;targetType&quot;:&quot;msg&quot;,&quot;statusVal&quot;:&quot;&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:770,&quot;y&quot;:2420,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;36d0ce4a604bab1c&quot;,&quot;type&quot;:&quot;delay&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;&quot;,&quot;pauseType&quot;:&quot;delay&quot;,&quot;timeout&quot;:&quot;12&quot;,&quot;timeoutUnits&quot;:&quot;seconds&quot;,&quot;rate&quot;:&quot;1&quot;,&quot;nbRateUnits&quot;:&quot;1&quot;,&quot;rateUnits&quot;:&quot;second&quot;,&quot;randomFirst&quot;:&quot;1&quot;,&quot;randomLast&quot;:&quot;5&quot;,&quot;randomUnits&quot;:&quot;seconds&quot;,&quot;drop&quot;:false,&quot;allowrate&quot;:false,&quot;x&quot;:490,&quot;y&quot;:2360,&quot;wires&quot;:[[&quot;538a3ccd51affbb3&quot;]]}]
+</code></pre>
+<p>You may want to check also the value of MAX temperature register (flow 5)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don´t forget to trigger a manual measurement (flow 3) first time after programming auto measurement.</p>
+</div>
+<p>In my testing the MAX temperature reached nearly 57º celsius.</p>
+<p><img alt="Screenshot" src="../images/flow9-b.png" /></p>
                 
               
               
@@ -675,7 +646,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../amm/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Auto measurement mode" rel="prev">
+        <a href="../playingautomeasurement/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Playing with auto measurement" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -684,20 +655,20 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Auto measurement mode
+              Playing with auto measurement
             </div>
           </div>
         </a>
       
       
         
-        <a href="../configurationregister/" class="md-footer__link md-footer__link--next" aria-label="Next: Configuration register" rel="next">
+        <a href="../allflows/" class="md-footer__link md-footer__link--next" aria-label="Next: Putting it all together" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Configuration register
+              Putting it all together
             </div>
           </div>
           <div class="md-footer__button md-icon">
