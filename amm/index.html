@@ -618,9 +618,9 @@
 It is hard to imagine in which use case someone would need to generate temperature values every five seconds, especially for a sensor like this one which is used to sense ambient temperature.</p>
 <p>The second mode of operation is triggering them with I2C commands, a kind of reading on demand.</p>
 <h2 id="what-is-the-best-mode-of-operation">What is the best mode of operation ?</h2>
-<p>It really depends on what you need. If you build a stand alone temperature and humidity device, lets say using the HDC2080 connected to a microcontroller and using an OLED display then surely you want to active the auto measurement. </p>
-<p>Now if you hook up the HDC2080 to a single board computer, like the Raspberry PI, and uses Node-RED to control an automation system then most likely you won´t need auto measurement. You can grab temperature and humidity data as you need.</p>
-<p>In our examples in this tutorial we will disable the auto measurement mode and trigger readings via I2C.</p>
+<p>It really depends on what you need. If you build a stand alone temperature and humidity device, lets say using the HDC2080 connected to a microcontroller and using an OLED display then sure enough you want to activate the auto measurement. </p>
+<p>Now, if you hook up the HDC2080 to a single board computer, like the Raspberry PI, and uses Node-RED to control an automation system, then most likely you won´t need auto measurement. You can grab temperature and humidity data as you need.</p>
+<p>In our examples in this tutorial we will disable the auto measurement mode to trigger readings via I2C.</p>
 <h2 id="auto-measurement-can-be-tricky">Auto measurement can be tricky</h2>
 <p>There is something you will need to overcome when using the auto measurement mode. It may happen that you issue an I2C command to read the temperature and humidity registers at the exact time the HDC2080 is updating its internal registers. That can lead to wrong readings. It is not difficult to reproduce this issue. Just program the device to generate 5 samples per second and start reading the temperature and humidity registers at random. Not even the interrupt pin can help you to circumvent this issue. Apparently the HDC2080 does not have a mechanism to avoid this from happening, at least that I am aware of.</p>
                 
