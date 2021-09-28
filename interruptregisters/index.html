@@ -669,14 +669,14 @@
                 
                 <h1 id="interrupt-registers">Interrupt registers</h1>
 <h2 id="interrupt-status-register-0x04">Interrupt status register (0x04)</h2>
-<p>Here is another important register even if it is used only once in the lifecycle of your project. This register will determine which value the interrupt pin will track.</p>
+<p>The bits in this register will show wheter new measurements exist or indicate temperatue nad humidity thresholds.</p>
 <p><img alt="Screenshot" src="../images/interrupt-status.png" /></p>
 <p>In our case, as we want to track new temperature and humidity values, we will use it as data ready pin.</p>
 <p>You can however use it to signal humidity and temperatue thresholds.</p>
 <h2 id="interrupt-configuration-register-0x07">Interrupt configuration register (0x07)</h2>
+<p>Here is another important register even if it is used only once in the lifecycle of your project. This register will determine which value the interrupt pin will track.</p>
 <p><img alt="Screenshot" src="../images/interrupt-configuration.png" /></p>
-<p>Some restrictions apply to the use of the interrupt pin. It can only be assigned to one measurement or threshold. it can not, for instance, signal temperature threshold exceeded and at the same time be used to signal humidity threshold.</p>
-<p>If your configure the bits of this register to enable the interrupt for two different thresholds the device will apply a priority rule too deterine what the interrupt pin will signal.</p>
+<p>Some restrictions apply to the use of the interrupt pin. It can only track one : new measurement or threshold. It can't track temperature threshold and, at the same time, humidity threshold. A priority rule will dictate the device working  in case you configure more than one threshold. </p>
 <p>Here below the excerpt of the datasheet that explains the priority rule:</p>
 <p><img alt="Screenshot" src="../images/interrupt-priority.png" /></p>
 <p>Later on we will do an exercise by forcing a temperature rising on the device having a threshold set for high temperature. We want to see a led blinking when the interrupt is triggered.</p>
