@@ -614,7 +614,7 @@
 <h1 id="reading-temperature">Reading temperature</h1>
 <p>Temperature is stored by the sensor in registers 0x00 and 0x01. Register 0x00 holds the least significant bits (bits0 to 7) and 0x01 the most significant bits (bits 8 to 15). As a matter of fact only 14 bits are used but this won´t change how you read the value. </p>
 <p>As the measurement value is stored in two 8-byte registers you have a couple of ways to get it.</p>
-<p>The first alternative is programming your computer or microcontroler to read two consecutive bytes. First read the register 0x00 and then read register 0x01. 
+<p>The first alternative is programming your computer or microcontroller to read two consecutive bytes. First read the register 0x00 and then read register 0x01. 
 The other alternative is reading both registers in a single shot as a 16 bit word.</p>
 <p>Whatever is the way you get the value it is necessary to apply a formula afterward to make sense of the value. Temperature is translated to degrees centigrade. </p>
 <p><img alt="Screenshot" src="../images/temperature-equation.png" /></p>

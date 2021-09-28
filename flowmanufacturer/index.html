@@ -609,9 +609,9 @@
                 
                 
                 <h1 id="read-manufacturer-id">Read manufacturer ID</h1>
-<p>In this first flow we will do something very simple: read the registers that holds the manufacturer ID. These are the registers 0xFC and 0xFD.</p>
+<p>In this first flow we will do something very simple: read the registers that hold the manufacturer ID. These are the registers 0xFC and 0xFD.</p>
 <p>For that purpose we will use a function node. The code is straightforward. We open the bus and read a 16-bit word with and then close the bus. The reading is formatted to be displayed as a hexadecimal value.</p>
-<p>Here below the code inside the funcion node:</p>
+<p>Here below the code inside the function node:</p>
 <pre><code>const HDC2080_I2C = 0x40;
 
 const hdc = i2c.openSync(1);

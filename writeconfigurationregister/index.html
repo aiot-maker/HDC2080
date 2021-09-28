@@ -668,7 +668,8 @@
                 
                 
                 <h1 id="programming-the-configuration-register">Programming the configuration register</h1>
-<p>Before we can read temperature and humidity we have to program the device behaviour. In this example we will program it with the auto measurement disabled, in which case you have to trigger the reading via I2C commands.</p>
+<p>Before we can read temperature and humidity we have to program the device behaviour. In this example we will program the sensor with the auto measurement disabled. In this mode of operation you have to trigger the reading via I2C commands.</p>
+<p>So, let's see how to read and write to the configuration register 0x0E.</p>
 <p>So, let´s see how to read and write to the configuration register 0x0E.</p>
 <h2 id="reading-the-configuration-register">Reading the configuration register</h2>
 <p>A single function node with below code will do the magic:</p>
