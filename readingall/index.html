@@ -16,7 +16,7 @@
     
     
       
-        <title>i2C library - Using HDC2080 in Node-RED</title>
+        <title>Reading all registers - Using HDC2080 in Node-RED</title>
       
     
     
@@ -63,7 +63,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#i2c-bus-library" class="md-skip">
+        <a href="#reading-all-registers" class="md-skip">
           Skip to content
         </a>
       
@@ -95,7 +95,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              i2C library
+              Reading all registers
             
           </span>
         </div>
@@ -366,14 +366,12 @@
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -394,21 +392,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../i2c/" class="md-nav__link">
         i2C library
       </a>
-      
     </li>
   
 
@@ -566,12 +554,14 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" checked>
       
       
       
@@ -606,11 +596,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../readingall/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Reading all registers
       </a>
+      
     </li>
   
 
@@ -651,14 +651,49 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/i2c.md" title="Edit this page" class="md-content__button md-icon">
+                  <a href="https://github.com/aiot-maker/HDC2080/edit/master/docs/readingall.md" title="Edit this page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="i2c-bus-library">I2C-bus library</h1>
-<p>The library <a href="https://www.npmjs.com/package/i2c-bus">i2c-bus available in NPM</a> will empower us to read and write to the registers of the HDC2080. Using Node.js libraries is easier then ever. As from Node-RED 1.3 it is possible to require a Node.js library from inside a function node. All you need to do is declare the library name and the variable name in the setup tab of the function node.</p>
-<p><img alt="Screenshot" src="../images/setup-i2c-bus.png" /></p>
+                <h1 id="reading-all-registers">Reading all registers</h1>
+<p>So far we developed flows to perform simple read and write operations. Let's now raise the bar and do some more advance stuff.</p>
+<p>Something that looks useful is reading all registers at once. This may allow us to visualise in an easier way how the HDC2080 is configured.</p>
+<p>Reading all registers at once takes a bit more time than doing a simple read, so I thought it would be a good idea to use async code for this reading.</p>
+<p>This is the code we will use inside the function node:</p>
+<pre><code>const HDC2080_I2C = 0x40;
+let tem =0;
+
+const hdc = i2c.openSync(1);
+hdc.readWord(HDC2080_I2C, 0x00, (a,b) =&gt; {node.send({topic : &quot;0x00&quot;, payload : b}) });
+hdc.readWord(HDC2080_I2C, 0x02, (a,b) =&gt; {node.send({topic : &quot;0x02&quot;, payload : b}) });
+
+hdc.readByte(HDC2080_I2C, 0x04, (a,b) =&gt; {node.send({topic : &quot;0x04&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x05, (a,b) =&gt; {node.send({topic : &quot;0x05&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x06, (a,b) =&gt; {node.send({topic : &quot;0x06&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x07, (a,b) =&gt; {node.send({topic : &quot;0x07&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x08, (a,b) =&gt; {node.send({topic : &quot;0x08&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x09, (a,b) =&gt; {node.send({topic : &quot;0x09&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0A, (a,b) =&gt; {node.send({topic : &quot;0x0A&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0B, (a,b) =&gt; {node.send({topic : &quot;0x0B&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0C, (a,b) =&gt; {node.send({topic : &quot;0x0C&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0D, (a,b) =&gt; {node.send({topic : &quot;0x0D&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0E, (a,b) =&gt; {node.send({topic : &quot;0x0E&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0F, (a,b) =&gt; {node.send({topic : &quot;0x0F&quot;, payload : b}) });
+
+hdc.readWord(HDC2080_I2C, 0xFC, (a,b) =&gt; {node.send({topic : &quot;0xFC&quot;, payload : b}) });
+hdc.readWord(HDC2080_I2C, 0xFE, (a,b) =&gt; {node.send({topic : &quot;0xFE&quot;, payload : b}) });
+hdc.closeSync();
+</code></pre>
+<p>and this is the flow:</p>
+<p><img alt="Screenshot" src="../images/flow10-a.png" /></p>
+<p>Below the flow for you to copy and import to Node-RED.</p>
+<pre><code>[{&quot;id&quot;:&quot;6c5ca181329200ab&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Read ALL registers&quot;,&quot;func&quot;:&quot;const HDC2080_I2C = 0x40;\nlet tem =0;\n\nconst hdc = i2c.openSync(1);\nhdc.readWord(HDC2080_I2C, 0x00, (a,b) =&gt; {node.send({topic : \&quot;0x00\&quot;, payload : b}) });\nhdc.readWord(HDC2080_I2C, 0x02, (a,b) =&gt; {node.send({topic : \&quot;0x02\&quot;, payload : b}) });\n\nhdc.readByte(HDC2080_I2C, 0x04, (a,b) =&gt; {node.send({topic : \&quot;0x04\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x05, (a,b) =&gt; {node.send({topic : \&quot;0x05\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x06, (a,b) =&gt; {node.send({topic : \&quot;0x06\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x07, (a,b) =&gt; {node.send({topic : \&quot;0x07\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x08, (a,b) =&gt; {node.send({topic : \&quot;0x08\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x09, (a,b) =&gt; {node.send({topic : \&quot;0x09\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x0A, (a,b) =&gt; {node.send({topic : \&quot;0x0A\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x0B, (a,b) =&gt; {node.send({topic : \&quot;0x0B\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x0C, (a,b) =&gt; {node.send({topic : \&quot;0x0C\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x0D, (a,b) =&gt; {node.send({topic : \&quot;0x0D\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x0E, (a,b) =&gt; {node.send({topic : \&quot;0x0E\&quot;, payload : b}) });\nhdc.readByte(HDC2080_I2C, 0x0F, (a,b) =&gt; {node.send({topic : \&quot;0x0F\&quot;, payload : b}) });\n\nhdc.readWord(HDC2080_I2C, 0xFC, (a,b) =&gt; {node.send({topic : \&quot;0xFC\&quot;, payload : b}) });\nhdc.readWord(HDC2080_I2C, 0xFE, (a,b) =&gt; {node.send({topic : \&quot;0xFE\&quot;, payload : b}) });\nhdc.closeSync();\n\n&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;initialize&quot;:&quot;&quot;,&quot;finalize&quot;:&quot;&quot;,&quot;libs&quot;:[{&quot;var&quot;:&quot;i2c&quot;,&quot;module&quot;:&quot;i2c-bus&quot;}],&quot;x&quot;:370,&quot;y&quot;:2580,&quot;wires&quot;:[[&quot;3795045389336255&quot;]]},{&quot;id&quot;:&quot;ee49d6b4a9ef1dbb&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Click to run&quot;,&quot;props&quot;:[{&quot;p&quot;:&quot;payload&quot;},{&quot;p&quot;:&quot;topic&quot;,&quot;vt&quot;:&quot;str&quot;}],&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;topic&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;x&quot;:190,&quot;y&quot;:2580,&quot;wires&quot;:[[&quot;6c5ca181329200ab&quot;]]},{&quot;id&quot;:&quot;ba081be2210e5f29&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Debug flow10&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;true&quot;,&quot;targetType&quot;:&quot;full&quot;,&quot;statusVal&quot;:&quot;&quot;,&quot;statusType&quot;:&quot;auto&quot;,&quot;x&quot;:760,&quot;y&quot;:2580,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;3795045389336255&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Build topic name&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;topic&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;\&quot;hdc2080/\&quot;&amp;topic&quot;,&quot;tot&quot;:&quot;jsonata&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:560,&quot;y&quot;:2580,&quot;wires&quot;:[[&quot;ba081be2210e5f29&quot;]]},{&quot;id&quot;:&quot;77fcf407fe55a350&quot;,&quot;type&quot;:&quot;comment&quot;,&quot;z&quot;:&quot;ae40d2da42dfdbb2&quot;,&quot;name&quot;:&quot;Flow 10 - Read all registers async reading&quot;,&quot;info&quot;:&quot;&quot;,&quot;x&quot;:260,&quot;y&quot;:2520,&quot;wires&quot;:[]}]
+</code></pre>
+<p>It will generate and send one object for each register. The payload holds the value of the register whereas the topic indicates the register address. You can configure the topic name in the change node that is connected to the function node. </p>
+<p>What I like most in this flow is that it can be used along MQTT to information from the sensor to some centralized monitoring and dashboard.</p>
+<p>When you run the flow you will see the flow of data in the debug node.</p>
+<p><img alt="Screenshot" src="../images/flow10-b.png" /></p>
                 
               
               
@@ -678,7 +713,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../calibration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Calibration" rel="prev">
+        <a href="../heating/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Playing with the heater" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -687,26 +722,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Calibration
+              Playing with the heater
             </div>
           </div>
         </a>
       
-      
-        
-        <a href="../flowmanufacturer/" class="md-footer__link md-footer__link--next" aria-label="Next: Read manufacturer ID" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              Read manufacturer ID
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
       
     </nav>
   
