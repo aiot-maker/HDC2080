@@ -693,6 +693,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#measuring-temperature-and-humidity-every-minute" class="md-nav__link">
+    Measuring temperature and humidity every minute
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gauge" class="md-nav__link">
     Gauge
   </a>
@@ -747,6 +754,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#measuring-temperature-and-humidity-every-minute" class="md-nav__link">
+    Measuring temperature and humidity every minute
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#gauge" class="md-nav__link">
     Gauge
   </a>
@@ -780,6 +794,9 @@
                 <h1 id="dashboard">Dashboard</h1>
 <p>Let's create a simple dashboard. It will use two componentes: gauges and line charts.</p>
 <p>In my use case I want the dashboard to run in a computer that is dedicated to monitoring my home automation and surveillance. For that purpose I use MQTT to communicate with the Node-RED instance that runs the measurement flow. So, two runtimes running different set of flows and coupled by MQTT messages.</p>
+<h2 id="measuring-temperature-and-humidity-every-minute">Measuring temperature and humidity every minute</h2>
+<p>This flow will generate one measurement per minute and will MQTT the result to the Node-RED runtime that controls the dashboard. The flow will perform the calculations to generate human readable values of temperature and humidity. There is a check in the function node that will disregard invalid measurements.</p>
+<p><img alt="Screenshot" src="../images/flow12-c.png" /></p>
 <h2 id="gauge">Gauge</h2>
 <p>We are used to visualise temperature and humidity using gauges. Ou dashboard uses <a href="https://discourse.nodered.org/t/first-september-give-away-lets-create-one-gauge/50507">awesome gauges developeded by Hotnip</a> using pure HTML and CSS.</p>
 <h2 id="line-chart">Line Chart</h2>
