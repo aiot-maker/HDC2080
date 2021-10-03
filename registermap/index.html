@@ -644,6 +644,20 @@
               
   
   
+  
+    <li class="md-nav__item">
+      <a href="../dashboard/" class="md-nav__link">
+        Dashboard
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
     
   
   
@@ -655,24 +669,47 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Register map
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Register map
       </a>
       
-    </li>
-  
-
-            
-          
-            
-              
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
   
-    <li class="md-nav__item">
-      <a href="../dashboard/" class="md-nav__link">
-        Dashboard
-      </a>
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generating-data-reading-all-registers-at-once" class="md-nav__link">
+    Generating data - Reading all registers at once
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-user-interface-in-the-dashboard" class="md-nav__link">
+    A user interface in the dashboard
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -703,6 +740,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#generating-data-reading-all-registers-at-once" class="md-nav__link">
+    Generating data - Reading all registers at once
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-user-interface-in-the-dashboard" class="md-nav__link">
+    A user interface in the dashboard
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -719,9 +778,39 @@
                 
                 
                 <h1 id="register-map">Register map</h1>
-<p>The flows in this advanced section use Node-RED dashboard to display data in a friendly way.</p>
-<p>The fist flow gives us an unified view of the status of all registers. This is a handy tool for those developing with the HDC2080. </p>
+<p>This flow is an addition to the dashboard created in the previous section.</p>
+<p>Again, this functionality is built with two separate flows. The first one runs in the Node-RED instance connected to the sensor whereas another flow display data in the dashboard.</p>
+<p>As usual MQTT is used to transfer data from the Node-RED that generates data to the one that displays data in the user interface.</p>
+<h2 id="generating-data-reading-all-registers-at-once">Generating data - Reading all registers at once</h2>
+<p>This flow reads all registers in a single shot.</p>
 <p>This is how the flow looks like:</p>
+<p><img alt="Screenshot" src="../images/flow10-a.png" /></p>
+<p>This is the code inside the function node:</p>
+<pre><code>const HDC2080_I2C = 0x40;
+
+const hdc = i2c.openSync(1);
+hdc.readWord(HDC2080_I2C, 0x00, (a,b) =&gt; {node.send({topic : &quot;0x00&quot;, payload : b}) });
+hdc.readWord(HDC2080_I2C, 0x02, (a,b) =&gt; {node.send({topic : &quot;0x02&quot;, payload : b}) });
+
+hdc.readByte(HDC2080_I2C, 0x04, (a,b) =&gt; {node.send({topic : &quot;0x04&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x05, (a,b) =&gt; {node.send({topic : &quot;0x05&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x06, (a,b) =&gt; {node.send({topic : &quot;0x06&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x07, (a,b) =&gt; {node.send({topic : &quot;0x07&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x08, (a,b) =&gt; {node.send({topic : &quot;0x08&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x09, (a,b) =&gt; {node.send({topic : &quot;0x09&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0A, (a,b) =&gt; {node.send({topic : &quot;0x0A&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0B, (a,b) =&gt; {node.send({topic : &quot;0x0B&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0C, (a,b) =&gt; {node.send({topic : &quot;0x0C&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0D, (a,b) =&gt; {node.send({topic : &quot;0x0D&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0E, (a,b) =&gt; {node.send({topic : &quot;0x0E&quot;, payload : b}) });
+hdc.readByte(HDC2080_I2C, 0x0F, (a,b) =&gt; {node.send({topic : &quot;0x0F&quot;, payload : b}) });
+
+hdc.readWord(HDC2080_I2C, 0xFC, (a,b) =&gt; {node.send({topic : &quot;0xFC&quot;, payload : b}) });
+hdc.readWord(HDC2080_I2C, 0xFE, (a,b) =&gt; {node.send({topic : &quot;0xFE&quot;, payload : b}) });
+hdc.closeSync();
+</code></pre>
+<h2 id="a-user-interface-in-the-dashboard">A user interface in the dashboard</h2>
+<p>This is the flow created in the Node-RED instance that controls the dashboard.</p>
 <p><img alt="Screenshot" src="../images/flow11-a.png" /></p>
 <p>The view in the dashboard:</p>
 <p><img alt="Screenshot" src="../images/flow11-b.png" /></p>
@@ -748,7 +837,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../readingall/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Reading all registers" rel="prev">
+        <a href="../dashboard/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Dashboard" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -757,26 +846,11 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Reading all registers
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../dashboard/" class="md-footer__link md-footer__link--next" aria-label="Next: Dashboard" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
               Dashboard
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   
