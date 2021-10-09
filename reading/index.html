@@ -720,7 +720,9 @@
                 
                 <h1 id="reading-temperature-and-humidity">Reading temperature and humidity</h1>
 <h1 id="how-to-get-humidity-and-temperature-values">How to get humidity and temperature values</h1>
-<p>The sensor will remain in sleep mode until a measurement is triggered. There is a set of three bits in the registers that will tell the sensor to work in auto measurements mode or wait for an I2C command to trigger a single measurement. The values of the measurement are converted from analog to digital and stored in specific registers from where you can read the values. It is possible to configure the sensor to signal in the physical interrupt pin the availability of new measurements.</p>
+<p>Most of the time the sensor remains in sleep mode to save power. It will wake up to read the humidity and temperature and store the values in its internal registers.
+How and when the sensor wakes up will depend on the configuration mode you program. We will discuss the operation modes in the next section.
+You may want to generate an interrupt to signal then a new measurement is available. The interrupt pin can be programmed to do so.</p>
 <h1 id="reading-temperature">Reading temperature</h1>
 <p>Temperature is stored by the sensor in registers 0x00 and 0x01. Register 0x00 holds the least significant bits (bits0 to 7) and 0x01 the most significant bits (bits 8 to 15). As a matter of fact only 14 bits are used but this won´t change how you read the value. </p>
 <p>As the measurement value is stored in two 8-byte registers you have a couple of ways to get it.</p>
